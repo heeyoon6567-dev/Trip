@@ -345,7 +345,9 @@ footer{margin-top:60px;font-size:13px;color:var(--dim);line-height:1.7;border-to
   try{ nameEl.value=localStorage.getItem('trip0918_name')||''; }catch(e){}
   nameEl.addEventListener('input',function(){ try{localStorage.setItem('trip0918_name',nameEl.value);}catch(e){} });
 
-  function paint(data){
+  var lastServer=null, SENT='trip0918_sent';
+  function clone(o){ return JSON.parse(JSON.stringify(o)); }
+  function paint(data,optimistic){
     var c=data.counts||{}, max=Math.max(1,c['1']||0,c['2']||0,c['3']||0,c['4']||0);
     ['1','2','3','4'].forEach(function(k){
       document.querySelector('[data-n="'+k+'"]').textContent=c[k]||0;
@@ -353,6 +355,7 @@ footer{margin-top:60px;font-size:13px;color:var(--dim);line-height:1.7;border-to
     });
     votersEl.textContent=(data.voters||0)+'명 참여';
     emptyEl.textContent=data.voters?'':'아직 아무도 투표 안 함. 첫 표 찍어주세요.';
+    if(!optimistic) lastServer=clone(data);   // 서버 확정값만 롤백 기준으로 삼음
   }
   function load(){
     if(API.indexOf('http')!==0){ votersEl.textContent='서버 미연결'; emptyEl.textContent='희윤이 투표 서버 연결하면 결과가 보여요.'; return; }
@@ -365,11 +368,43 @@ footer{margin-top:60px;font-size:13px;color:var(--dim);line-height:1.7;border-to
     var name=nameEl.value.trim();
     if(!name){ showToast('이름을 먼저 적어주세요'); nameEl.focus(); return; }
     if(API.indexOf('http')!==0){ showToast('아직 투표 서버가 연결 안 됐어요'); return; }
-    btn.disabled=true; btn.textContent='보내는 중…';
-    fetch(API,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({name:name,picks:picks})})
+
+    var sending=picks.slice();
+    var rollback=lastServer?clone(lastServer):null;
+
+    if(rollback){
+      // 서버(2~10초) 기다리지 않고 막대·인원수를 먼저 갱신
+      var opt=clone(rollback), prev=null;
+      try{ prev=JSON.parse(localStorage.getItem(SENT)||'null'); }catch(e){}
+      if(prev&&prev.name===name){                       // 같은 이름 재투표 → 이전 표 회수
+        prev.picks.forEach(function(id){ if(opt.counts[id]>0) opt.counts[id]--; });
+      } else {
+        opt.voters=(opt.voters||0)+1;
+      }
+      sending.forEach(function(id){ opt.counts[id]=(opt.counts[id]||0)+1; });
+      paint(opt,true);
+      showToast(name+' 투표 완료');
+    } else {
+      // 첫 집계도 못 받은 상태 — 예전처럼 응답을 기다린다
+      btn.disabled=true; btn.textContent='보내는 중…';
+    }
+
+    fetch(API,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({name:name,picks:sending})})
       .then(function(r){return r.json();})
-      .then(function(d){ if(d.ok){ paint(d); showToast(name+' 투표 완료'); } else showToast(d.error||'실패'); })
-      .catch(function(){ showToast('전송 실패, 다시 시도'); })
+      .then(function(d){
+        if(d.ok){
+          paint(d);                                     // 서버 확정값으로 교정
+          try{ localStorage.setItem(SENT,JSON.stringify({name:name,picks:sending})); }catch(e){}
+          if(!rollback) showToast(name+' 투표 완료');
+        } else {
+          if(rollback) paint(rollback);
+          showToast(d.error||'실패');
+        }
+      })
+      .catch(function(){
+        if(rollback) paint(rollback);                   // 낙관적 갱신 되돌리기
+        showToast('전송 실패, 다시 눌러주세요');
+      })
       .then(function(){ btn.disabled=false; btn.textContent='투표하기'; });
   });
 })();
