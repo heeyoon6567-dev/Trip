@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>홍천·가평 카라반 바베큐 여행 — 9/18~19</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#12281F;--bg2:#1A3529;--ink:#F3EFE4;--muted:#CFE3D6;--dim:#8FB39F;
+  --amber:#F3B25C;--green:#6FB08F;--line:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:
+ radial-gradient(700px 500px at 50% 110%,rgba(255,150,60,.28),transparent 70%),
+ radial-gradient(400px 400px at 10% 0%,rgba(60,120,90,.35),transparent 70%)}
+a{color:inherit}
+.wrap{max-width:640px;margin:0 auto;padding:28px 20px 80px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(18,40,31,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin:0 -20px;padding:10px 20px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{text-decoration:none;font-size:14px;font-weight:600;color:var(--muted);padding:8px 14px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+nav a.on{color:var(--amber);border-color:rgba(243,178,92,.5);background:rgba(243,178,92,.08)}
+
+/* hero */
+.hero{padding:36px 0 10px}
+.date{font-size:15px;letter-spacing:.06em;color:var(--amber);font-weight:600}
+h1{font-size:44px;line-height:1.05;font-weight:900;letter-spacing:-.03em;margin-top:10px}
+h1 small{display:block;font-size:22px;font-weight:700;color:var(--muted);letter-spacing:-.01em;margin-top:6px}
+.dday{margin-top:18px;display:inline-flex;align-items:baseline;gap:8px;background:rgba(243,178,92,.12);border:1px solid rgba(243,178,92,.4);border-radius:12px;padding:8px 14px}
+.dday b{font-size:26px;font-weight:900;color:var(--amber);letter-spacing:-.02em}
+.dday span{font-size:14px;color:var(--muted)}
+
+/* people */
+.people{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.p{display:flex;flex-direction:column;align-items:center;gap:6px;width:64px}
+.p i{width:56px;height:56px;border-radius:50%;background:#1F3D30;border:2px solid #3E7B5F;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:16px}
+.p.late i{border-color:var(--amber);background:#3A2E1A}
+.p.leave i{border-color:#8B5A4A}
+.p small{font-size:11px;color:var(--dim);white-space:nowrap}
+
+/* sections */
+section{padding-top:44px}
+h2{font-size:22px;font-weight:800;letter-spacing:-.02em;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+h2 em{font-style:normal;color:var(--amber);font-size:26px;font-weight:900;white-space:nowrap}
+h2 span{font-size:13px;font-weight:500;color:var(--dim);flex-basis:100%}
+.sub{font-size:14px;color:var(--dim);margin-top:4px}
+
+/* timeline */
+.tl{margin-top:18px;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:14px;bottom:14px;width:3px;border-radius:2px;background:linear-gradient(#3E7B5F,var(--amber))}
+.ev{position:relative;border:0;background:none;color:inherit;font:inherit;text-align:left;width:100%;padding:12px 8px 12px 0;cursor:pointer;display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:baseline;border-radius:10px}
+.ev:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.ev::before{content:"";position:absolute;left:-26px;top:20px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:3px solid var(--green)}
+.ev.hot::before{border-color:var(--amber);background:var(--amber);box-shadow:0 0 14px rgba(243,178,92,.7)}
+.ev .t{font-size:15px;font-weight:700;color:var(--amber);letter-spacing:.02em}
+.ev .w{font-size:18px;font-weight:700}
+.ev.hot .w{font-size:22px;font-weight:900}
+.ev .w small{display:block;font-size:13px;font-weight:400;color:var(--muted);margin-top:2px}
+.ev .more{grid-column:2;font-size:14px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:6px;display:none;line-height:1.6}
+.ev.open .more{display:block}
+.ev .more a,.ev .ml{color:var(--amber);font-weight:600;text-decoration:none}
+.ev .ml{margin-left:4px;font-size:12px}
+.ev .more a:hover{text-decoration:underline}
+.tba{margin-top:16px;border:1px dashed rgba(255,255,255,.3);border-radius:14px;padding:22px;text-align:center;color:var(--muted);font-size:15px}
+
+/* info rows */
+.rows{margin-top:14px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.row b{font-size:14px;font-weight:700;color:var(--amber)}
+.row div{font-size:16px}
+.row small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.note{margin-top:16px;background:rgba(243,178,92,.12);border-radius:12px;padding:14px 16px;font-size:14px;line-height:1.7}
+
+/* lodging */
+.lodge{margin-top:18px;display:grid;gap:14px}
+.card{position:relative;background:rgba(255,255,255,.05);border:1.5px solid var(--line);border-radius:18px;padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .15s}
+.card:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.card.picked{border-color:var(--amber);background:rgba(243,178,92,.09)}
+.card .head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card h3{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.card h3 small{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-top:2px}
+.price{text-align:right;flex:none}
+.price b{display:block;font-size:20px;font-weight:900;color:var(--amber);letter-spacing:-.02em}
+.price span{font-size:11px;color:var(--muted)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.tag{font-size:12px;padding:4px 9px;border-radius:7px;background:#1F3D30;border:1px solid #3E7B5F;color:var(--muted)}
+.tag.ok{border-color:var(--green);color:#BDEBCF}
+.card p{margin-top:12px;font-size:14px;line-height:1.65;color:var(--ink)}
+.card p b{color:var(--amber);font-weight:700}
+.card .dist{margin-top:8px;font-size:12px;color:var(--dim);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.card .dist a{color:var(--amber);font-weight:600;text-decoration:none}
+.card .dist a:hover{text-decoration:underline}
+.card .check{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:14px;color:var(--bg);background:transparent;transition:all .15s}
+.card.picked .check{background:var(--amber);border-color:var(--amber)}
+.card.picked .price{padding-right:34px}
+.card .check{font-weight:800;font-size:13px}
+.vote{position:sticky;bottom:12px;margin-top:18px;background:rgba(26,53,41,.95);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+.vote .txt{flex:1;font-size:14px;color:var(--muted)}
+.vote .txt b{color:var(--ink);font-size:16px;display:block}
+.btn{border:0;font:inherit;font-weight:700;font-size:14px;padding:10px 16px;border-radius:10px;cursor:pointer;background:var(--amber);color:var(--bg);white-space:nowrap}
+.btn:disabled{opacity:.4;cursor:default}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.namebox{margin-top:16px;display:flex;gap:8px}
+.namebox input{flex:1;min-width:0;font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink)}
+.namebox input::placeholder{color:var(--dim)}
+.namebox input:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:transparent}
+.results{margin-top:18px;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:16px}
+.results h4{font-size:15px;font-weight:700;display:flex;justify-content:space-between}
+.results h4 span{font-weight:500;color:var(--dim);font-size:13px}
+.bar{margin-top:10px;display:grid;grid-template-columns:110px 1fr 36px;gap:10px;align-items:center;font-size:13px}
+.bar i{display:block;height:10px;border-radius:5px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar i b{display:block;height:100%;width:0;background:var(--amber);border-radius:5px;transition:width .4s}
+.bar em{font-style:normal;font-weight:800;color:var(--amber);text-align:right}
+.results .empty{margin-top:8px;font-size:13px;color:var(--dim)}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(10px);background:var(--ink);color:var(--bg);font-size:14px;font-weight:600;padding:10px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:all .2s}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+footer{margin-top:60px;font-size:13px;color:var(--dim);line-height:1.7;border-top:1px solid var(--line);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav aria-label="바로가기">
+  <a href="#day1">DAY 1</a>
+  <a href="#day2">DAY 2</a>
+  <a href="#info">안내</a>
+  <a href="#lodge">숙소 투표</a>
+</nav>
+
+<header class="hero">
+  <div class="date">2026. 9. 18 (금) — 9. 19 (토) · 1박 2일</div>
+  <h1>홍천 · 가평<small>카라반 바베큐 여행</small></h1>
+  <div class="dday" id="dday"><b>D-?</b><span>9월 18일 금요일</span></div>
+
+  <div class="people" aria-label="참여자">
+    <div class="p"><i>찬영</i></div>
+    <div class="p"><i>서아</i></div>
+    <div class="p"><i>희윤</i><small>운전·요리</small></div>
+    <div class="p"><i>나린</i></div>
+    <div class="p leave"><i>주영</i><small>15시 이탈</small></div>
+    <div class="p late"><i>윤서</i><small>퇴근 후 합류</small></div>
+  </div>
+</header>
+
+<section id="day1">
+  <h2><em>DAY 1</em> 9/18 금요일 <span>항목을 누르면 자세히</span></h2>
+  <div class="tl">
+    <div class="ev" role="button" tabindex="0">
+      <div class="t">09:30</div>
+      <div class="w">홍대 집결<small>윤서 제외 5명 · 오아시스 홍대 앞 <a class="ml" href="https://m.map.naver.com/search2/search.naver?query=오아시스%20방탈출%20홍대" target="_blank" rel="noopener" onclick="event.stopPropagation()">지도 ↗</a></small></div>
+      <div class="more">방탈출 시작 20분 전 집결. 늦으면 게임 시작 못 하니 시간 엄수. <a href="https://m.map.naver.com/search2/search.naver?query=오아시스%20방탈출%20홍대" target="_blank" rel="noopener">네이버 지도</a></div>
+    </div>
+    <div class="ev" role="button" tabindex="0">
+      <div class="t">09:50</div>
+      <div class="w">방탈출 — 오아시스 홍대<small>하이맥스 테마 · 130분 · 인당 36,000원 <a class="ml" href="https://m.map.naver.com/search2/search.naver?query=오아시스%20방탈출%20홍대" target="_blank" rel="noopener" onclick="event.stopPropagation()">지도 ↗</a></small></div>
+      <div class="more">5명 한 팀. 끝나면 12:00쯤. 비용은 현장에서 각자 또는 희윤이 몰아서 결제 후 정산. <a href="https://m.map.naver.com/search2/search.naver?query=오아시스%20방탈출%20홍대" target="_blank" rel="noopener">네이버 지도</a></div>
+    </div>
+    <div class="ev" role="button" tabindex="0">
+      <div class="t">12:30</div>
+      <div class="w">점심 — 연하동 (연남동)<small>연어소바 · 치킨덮밥 · 초밥 · 예약 예정 <a class="ml" href="https://m.map.naver.com/search2/search.naver?query=연하동%20연남" target="_blank" rel="noopener" onclick="event.stopPropagation()">지도 ↗</a></small></div>
+      <div class="more">방탈출에서 도보 15분. 1인 1.5~2만 원대. <a href="https://m.map.naver.com/search2/search.naver?query=연하동%20연남" target="_blank" rel="noopener">네이버 지도</a></div>
+    </div>
+    <div class="ev" role="button" tabindex="0">
+      <div class="t">식후</div>
+      <div class="w">카페 — 센트럴사이트 연남점<small>연하동에서 도보 5분 · 커피 · 디저트 <a class="ml" href="https://m.map.naver.com/search2/search.naver?query=센트럴사이트%20연남점" target="_blank" rel="noopener" onclick="event.stopPropagation()">지도 ↗</a></small></div>
+      <div class="more">자리 넉넉한 로스터리. 티라미수·딸기 트라이플 추천. <a href="https://m.map.naver.com/search2/search.naver?query=센트럴사이트%20연남점" target="_blank" rel="noopener">네이버 지도</a></div>
+    </div>
+    <div class="ev" role="button" tabindex="0">
+      <div class="t">15:00</div>
+      <div class="w">주영 이탈 → 숙소 출발</div>
+      <div class="more">희윤 차 한 대. 홍대에서 홍천까지 약 1시간 40분.</div>
+    </div>
+    <div class="ev" role="button" tabindex="0">
+      <div class="t">오후</div>
+      <div class="w">숙소 도착 · 체크인<small>수영장 · 자유시간</small></div>
+      <div class="more">다들 수영장에서 노는 동안 희윤이 테이블 세팅하고 요리 깔아둠.</div>
+    </div>
+    <div class="ev" role="button" tabindex="0">
+      <div class="t">저녁</div>
+      <div class="w">윤서 퇴근 후 합류</div>
+      <div class="more">원주역 기준 50분~1시간 20분. 숙소 확정되면 주소 공유.</div>
+    </div>
+    <div class="ev hot" role="button" tabindex="0">
+      <div class="t">밤</div>
+      <div class="w">🔥 바베큐 파티</div>
+      <div class="more">폭립 · 허브 통삼겹 (인당 300g) · 야채구이 → 알리오올리오 → 볶음밥 → 라면. 고기는 오븐 초벌해서 감. 술: 소주·맥주·위스키·엑스레이티드.</div>
+    </div>
+  </div>
+</section>
+
+<section id="day2">
+  <h2><em>DAY 2</em> 9/19 토요일</h2>
+  <div class="tba">일정 추후 공지<br><small style="color:var(--dim)">조식: 못 일어나는 사람은 밥 없음</small></div>
+</section>
+
+<section id="info">
+  <h2>안내</h2>
+  <div class="rows">
+    <div class="row"><b>이동</b><div>희윤 차 한 대로 이동</div></div>
+    <div class="row"><b>준비물</b><div>돈<small>방탈출 36,000원 + 식비 + 숙소비 정산</small></div></div>
+    <div class="row"><b>점심</b><div>연하동 (연남동)에서 해결</div></div>
+    <div class="row"><b>저녁</b><div>희윤이 장 봐오고 요리까지 함<small>여러분은 앉아서 먹고 설거지만 하슈</small></div></div>
+  </div>
+  <div class="note">✈ 제주도 두 분 비행기표 정해지면 세부 일정 조율 예정<br>💬 건의사항은 희윤에게 제출 바람</div>
+</section>
+
+<section id="lodge">
+  <h2>숙소 투표 <span>숙박 5인 · 카드를 눌러 2곳까지 고르세요</span></h2>
+  <div class="sub">인당 5만 원 안팎. 가격은 9/18 금요일 기준, 예약 전 재확인.</div>
+
+  <div class="lodge" id="lodgeList">
+    <div class="card" tabindex="0" role="button" aria-pressed="false" data-id="1" data-name="픽션하우스">
+      <div class="head">
+        <h3>픽션하우스<small>홍천 북방면 · 펜션</small></h3>
+        <div class="price"><b>219,000</b><span>1박 총액</span></div>
+      </div>
+      <div class="tags"><span class="tag ok">트리플 룸</span><span class="tag ok">화장실 2개</span><span class="tag ok">더블베드 3개</span><span class="tag ok">개별 BBQ</span><span class="tag">전기그릴</span></div>
+      <p>트리플 룸 한 채에 침실·화장실이 2개씩이라 <b>남녀 방 나누고 화장실도 각자</b> 쓸 수 있음. 방 바로 앞 바베큐, 옆에 계곡. 건물은 좀 오래됐지만 깨끗하고 가성비 후기가 제일 많음. 주변에 가게 없어서 장은 미리.</p>
+      <div class="dist"><span>원주역 약 50분 · 홍대 약 1시간 40분</span><a href="https://m.map.naver.com/search2/search.naver?query=픽션하우스%20홍천" target="_blank" rel="noopener" onclick="event.stopPropagation()">네이버 지도 ↗</a></div>
+      <div class="check" aria-hidden="true">✓</div>
+    </div>
+
+    <div class="card" tabindex="0" role="button" aria-pressed="false" data-id="2" data-name="빌리지736">
+      <div class="head">
+        <h3>빌리지736<small>홍천 북방면 · 독채 펜션</small></h3>
+        <div class="price"><b>259,000</b><span>1박 총액</span></div>
+      </div>
+      <div class="tags"><span class="tag ok">독채</span><span class="tag ok">침실 2 · 침대 2</span><span class="tag">욕실 1</span><span class="tag ok">개별 BBQ</span><span class="tag">숯불</span><span class="tag ok">수영장 운영 중</span></div>
+      <p>픽션하우스 바로 옆. 독채라 <b>바베큐 온전히 우리만</b> 쓰고, <b>수영장 운영 확인 완료</b>(4곳 중 유일). 사장님 친절·빔프로젝터 후기 좋음. 강아지·고양이 있어서 동물 좋아하면 플러스.</p>
+      <div class="dist"><span>원주역 약 50분 · 홍대 약 1시간 40분</span><a href="https://m.map.naver.com/search2/search.naver?query=빌리지736%20홍천" target="_blank" rel="noopener" onclick="event.stopPropagation()">네이버 지도 ↗</a></div>
+      <div class="check" aria-hidden="true">✓</div>
+    </div>
+
+    <div class="card" tabindex="0" role="button" aria-pressed="false" data-id="3" data-name="더캠프 카라반글램핑">
+      <div class="head">
+        <h3>더캠프 카라반글램핑<small>가평 설악면 · 카라반</small></h3>
+        <div class="price"><b>238,000</b><span>카라반 2대 총액</span></div>
+      </div>
+      <div class="tags"><span class="tag ok">카라반 2대 대여</span><span class="tag ok">개별 화장실</span><span class="tag ok">개별 BBQ</span><span class="tag">공용 놀이시설</span></div>
+      <p><b>카라반 2대 빌려서 남녀 따로</b> 쓰고, 각 카라반에 화장실 있어서 밤에 나갈 일 없음. 시설 깨끗하고 직원 친절 후기. 바베큐는 한쪽 카라반 앞에 모여서. 캠핑 감성 원하면 여기.</p>
+      <div class="dist"><span>원주역 약 1시간 20분 · 홍대 약 1시간 20분</span><a href="https://m.map.naver.com/search2/search.naver?query=가평%20더캠프%20카라반%20글램핑" target="_blank" rel="noopener" onclick="event.stopPropagation()">네이버 지도 ↗</a></div>
+      <div class="check" aria-hidden="true">✓</div>
+    </div>
+
+    <div class="card" tabindex="0" role="button" aria-pressed="false" data-id="4" data-name="달빛정원글램핑">
+      <div class="head">
+        <h3>달빛정원글램핑<small>가평 설악면 · 카라반</small></h3>
+        <div class="price"><b>203,000</b><span>카라반 2대 총액</span></div>
+      </div>
+      <div class="tags"><span class="tag ok">카라반 2대 대여</span><span class="tag ok">개별 화장실</span><span class="tag ok">개별 BBQ</span><span class="tag ok">4곳 중 최저가</span></div>
+      <p><b>카라반 2대, 개별 화장실 포함</b>. "몸만 오면 된다"는 후기처럼 장비 걱정 없음. 4곳 중 가장 저렴. 근처 양떼목장 있음.</p>
+      <div class="dist"><span>원주역 약 1시간 10분 · 홍대 약 1시간 20분</span><a href="https://m.map.naver.com/search2/search.naver?query=달빛정원글램핑%20가평" target="_blank" rel="noopener" onclick="event.stopPropagation()">네이버 지도 ↗</a></div>
+      <div class="check" aria-hidden="true">✓</div>
+    </div>
+  </div>
+
+  <div class="namebox">
+    <input id="voterName" type="text" maxlength="10" placeholder="이름 (찬영 / 서아 / 나린 …)" autocomplete="off">
+  </div>
+
+  <div class="results" id="results">
+    <h4>현재 결과 <span id="voters">집계 중…</span></h4>
+    <div class="bar"><span>1 픽션하우스</span><i><b data-r="1"></b></i><em data-n="1">0</em></div>
+    <div class="bar"><span>2 빌리지736</span><i><b data-r="2"></b></i><em data-n="2">0</em></div>
+    <div class="bar"><span>3 더캠프</span><i><b data-r="3"></b></i><em data-n="3">0</em></div>
+    <div class="bar"><span>4 달빛정원</span><i><b data-r="4"></b></i><em data-n="4">0</em></div>
+    <div class="empty" id="resEmpty"></div>
+  </div>
+
+  <div class="vote">
+    <div class="txt" id="voteTxt">아직 고르지 않았어요<b>카드를 눌러 최대 2곳 선택</b></div>
+    <button class="btn" id="copyBtn" type="button" disabled>투표하기</button>
+  </div>
+</section>
+
+<footer>
+  숙소·회비는 확정되는 대로 이 페이지에 반영합니다.<br>
+  1인 2표, 기명 투표. 같은 이름으로 다시 투표하면 덮어써집니다.<br>누가 어디 찍었는지는 희윤만 봅니다. 여기엔 합계만 표시.
+</footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  // D-day
+  var target=new Date(2026,8,18), now=new Date();
+  var d=Math.ceil((target-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/86400000);
+  document.querySelector('#dday b').textContent = d>0?'D-'+d : d===0?'D-DAY':'끝';
+
+  // timeline expand
+  document.querySelectorAll('.ev').forEach(function(b){
+    b.addEventListener('click',function(e){ if(e.target.closest('a')) return; b.classList.toggle('open'); });
+    b.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();b.classList.toggle('open');} });
+  });
+
+  // nav highlight
+  var links=[].slice.call(document.querySelectorAll('nav a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){
+        links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id);});
+      }});
+    },{rootMargin:'-40% 0px -55% 0px'});
+    secs.forEach(function(s){io.observe(s);});
+  }
+
+  // lodging vote (max 2)
+  var KEY='trip0918_lodge2', MAX=2, cards=[].slice.call(document.querySelectorAll('.card'));
+  var txt=document.getElementById('voteTxt'), btn=document.getElementById('copyBtn'), toast=document.getElementById('toast');
+  var picks=[];
+  try{ picks=JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ picks=[]; }
+  function nameOf(id){ var c=cards.filter(function(c){return c.dataset.id===id;})[0]; return c?c.dataset.name:''; }
+  function render(){
+    cards.forEach(function(c){ var i=picks.indexOf(c.dataset.id); var on=i>-1; c.classList.toggle('picked',on); c.setAttribute('aria-pressed',on); c.querySelector('.check').textContent=on?(i+1):'✓'; });
+    if(picks.length){ txt.innerHTML='내 선택 ('+picks.length+'/'+MAX+')<b>'+picks.map(function(id){return id+'번 '+nameOf(id);}).join(' · ')+'</b>'; btn.disabled=false; }
+    else { txt.innerHTML='아직 고르지 않았어요<b>카드를 눌러 최대 '+MAX+'곳 선택</b>'; btn.disabled=true; }
+    try{ localStorage.setItem(KEY,JSON.stringify(picks)); }catch(e){}
+  }
+  function pick(c){
+    var id=c.dataset.id, i=picks.indexOf(id);
+    if(i>-1){ picks.splice(i,1); }
+    else if(picks.length>=MAX){ showToast('2곳까지만 고를 수 있어요. 하나 취소 후 선택'); return; }
+    else { picks.push(id); }
+    render();
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click',function(e){ if(e.target.closest('a')) return; pick(c); });
+    c.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(c);} });
+  });
+  render();
+
+  function showToast(m){ toast.textContent=m; toast.classList.add('show'); setTimeout(function(){toast.classList.remove('show');},1600); }
+  // ===== 투표 서버 (Apps Script 웹 앱 URL) =====
+  var API='https://script.google.com/macros/s/AKfycbyu6MU7JLoS7IWkK9MCz0ClZLA93zD8uTN7zbJ_FnnMVIZApX6ktTkaoLw59ybT2apl/exec';
+  var nameEl=document.getElementById('voterName'), votersEl=document.getElementById('voters'), emptyEl=document.getElementById('resEmpty');
+  try{ nameEl.value=localStorage.getItem('trip0918_name')||''; }catch(e){}
+  nameEl.addEventListener('input',function(){ try{localStorage.setItem('trip0918_name',nameEl.value);}catch(e){} });
+
+  function paint(data){
+    var c=data.counts||{}, max=Math.max(1,c['1']||0,c['2']||0,c['3']||0,c['4']||0);
+    ['1','2','3','4'].forEach(function(k){
+      document.querySelector('[data-n="'+k+'"]').textContent=c[k]||0;
+      document.querySelector('[data-r="'+k+'"]').style.width=((c[k]||0)/max*100)+'%';
+    });
+    votersEl.textContent=(data.voters||0)+'명 참여';
+    emptyEl.textContent=data.voters?'':'아직 아무도 투표 안 함. 첫 표 찍어주세요.';
+  }
+  function load(){
+    if(API.indexOf('http')!==0){ votersEl.textContent='서버 미연결'; emptyEl.textContent='희윤이 투표 서버 연결하면 결과가 보여요.'; return; }
+    fetch(API).then(function(r){return r.json();}).then(paint).catch(function(){ votersEl.textContent='결과 불러오기 실패'; });
+  }
+  load();
+
+  btn.addEventListener('click',function(){
+    if(!picks.length) return;
+    var name=nameEl.value.trim();
+    if(!name){ showToast('이름을 먼저 적어주세요'); nameEl.focus(); return; }
+    if(API.indexOf('http')!==0){ showToast('아직 투표 서버가 연결 안 됐어요'); return; }
+    btn.disabled=true; btn.textContent='보내는 중…';
+    fetch(API,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({name:name,picks:picks})})
+      .then(function(r){return r.json();})
+      .then(function(d){ if(d.ok){ paint(d); showToast(name+' 투표 완료'); } else showToast(d.error||'실패'); })
+      .catch(function(){ showToast('전송 실패, 다시 시도'); })
+      .then(function(){ btn.disabled=false; btn.textContent='투표하기'; });
+  });
+})();
+</script>
+</body>
+</html>
